@@ -1,0 +1,16 @@
+{
+  "name": "pangram-sales-widget-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Root for Pangram Sales Widget frontend and backend.",
+  "scripts": {
+    "dev:frontend": "npm run dev --prefix frontend",
+    "dev:backend": "backend/venv/bin/python -m uvicorn main:app --reload --app-dir backend",
+    "dev": "concurrently \"npm:dev:frontend\" \"npm:dev:backend\"",
+    "setup:backend": "python3 -m venv backend/venv && backend/venv/bin/pip install -r backend/requirements.txt",
+    "postinstall": "npm run setup:backend && (cd frontend && npm install)"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2" 
+  }
+} 
